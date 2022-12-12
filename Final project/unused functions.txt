@@ -1,0 +1,23 @@
+def findfreq(text, n = 3):
+    """Machine learning purpose""" #extracting top freq from each sites
+    en_stopws = stopwords.words('english')  #  loads the default stopwords list
+    #en_stopws.append('spam')  # add custom words to the list
+    text = [token for token in text if token not in en_stopws]  # filter stopwords
+    frequency = nltk.FreqDist(text)
+    return frequency.most_common(n)
+
+def processeverything(text):
+    """The functions which connect everything to works together"""
+    processedtoken = textprocessing(text)
+    processedtexts = lemmatization(processedtoken)
+    topfreq = findfreq(processedtexts)
+    try:
+        topfreqlst.append(topfreq)
+    except:
+        pass
+    return processedtexts
+
+def printchange(words):
+    """Testing lemmatizing modules"""
+    for word in words:
+        print (word + "-->"+ WordNetLemmatizer().lemmatize(word,'v'))

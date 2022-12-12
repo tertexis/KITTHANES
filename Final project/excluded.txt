@@ -1,0 +1,13 @@
+of : 317
+be : 291
+and : 185
+in : 345
+o : 27
+s : 106
+share : 60
+a : 58
+per : 24
+select : 14
+sector : 8
+stock : 11
+on : 10
