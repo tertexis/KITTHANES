@@ -21,3 +21,14 @@ def printchange(words):
     """Testing lemmatizing modules"""
     for word in words:
         print (word + "-->"+ WordNetLemmatizer().lemmatize(word,'v'))
+
+statistics.append(date) # 1
+    statistics.append(sentimentvalue) #2
+    statistics.append(greenpercent) #3
+    statistics.append(redpercent) #4
+    statistics.append(greenbulls) #5
+    statistics.append(redbears) #6
+    statistics.append(len(processedtotalword)) #7
+    statistics.append(len(excludedlst)) #8
+    statistics.append(len(toexclude.split())) #9
+    statistics.append(greenbulls + redbears) #10

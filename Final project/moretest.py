@@ -1,39 +1,28 @@
-def machinelearnstop():
-    with open('excluded.txt', 'r') as infile:
-        data = infile.read()
+import pandas as pd
+import numpy as np
 
-    lines = data.split('\n')
+dateformat = "2007-11-14"
+nasdaqmovement = pd.read_csv("NDX Data.csv")
+nasdaqmovement = nasdaqmovement.values
+print("DATE:", dateformat)
+indices = np.argwhere(nasdaqmovement[:,0] == dateformat).ravel()
+print(indices)
+movement = nasdaqmovement[indices[0], 4] - nasdaqmovement[indices[0], 1]
+movement = round(movement, 2)
+percentage = (movement / nasdaqmovement[indices[0], 1]) * 100
+percentage = round(percentage, 2)
+print("The market on", dateformat, "ended with", movement, "movement. Which is a total of", str(percentage) + "%", "change")
 
-    with open('stopwords.txt', 'a') as outfile:
-        for line in lines:
-            word, count = line.split(':')
-
-            word = word.strip()
-            count = count.strip()
-
-            if int(count) >= 2000:
-                outfile.write(word + " ")
-                data = data.replace(line, '') #remove original strings
-
-    lines = data.split('\n')
-
-    lines = [line for line in lines if line.strip() != '']
-
-    data = '\n'.join(lines)
-
-    with open('excluded.txt', 'w') as infile:
-        infile.write(data) #rewrite
-
-f = open("ex1.txt", "r")
-content = f.readline()
-g = open("excluded.txt", "r")
-content1 = g.readline()
-
-lst = []
-lst.append(content1)
-lst.append(content)
-if str(content1) == str(content):
-    print("true")
-else:
-    print("false")
-print(lst)
+"""
+regresslst = []
+regresslst.extend([sentimentvalue, percentage, dateformat])
+with open("RegressionModel.txt", "r+") as f:
+    lines = list(f)
+    f.seek(0)
+    for i in range(min(len(lines), len(regresslst))):
+        f.write(lines[i].rstrip('\n'))
+        f.write(' ')
+        f.write(str(regresslst[i]))
+        f.write('\n')
+    f.truncate()
+"""

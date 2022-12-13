@@ -9,3 +9,7 @@ tmx.com
 nasdaq.com
 indiatimes.com
 krungthai.com
+cnbc.com
+apple.com
+nasdaqomx.com
+nasdaqomxnordic.com
